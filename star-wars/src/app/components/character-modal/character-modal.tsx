@@ -6,6 +6,17 @@ interface ModalProps {
   id: string;
   onClose: () => void;
 }
+type Movies = {
+  [key: string]: string;
+};
+const movies: Movies = {
+  "https://swapi.dev/api/films/1/": "A New Hope",
+  "https://swapi.dev/api/films/2/": "The Empire Strikes Back",
+  "https://swapi.dev/api/films/3/": "Return of the Jedi",
+  "https://swapi.dev/api/films/4/": "The Phantom Menace",
+  "https://swapi.dev/api/films/5/": "Attack of the Clones",
+  "https://swapi.dev/api/films/6/": "Revenge of the Sith",
+};
 
 export default function CharacterModal({ person, id, onClose }: ModalProps) {
     return (
@@ -26,7 +37,7 @@ export default function CharacterModal({ person, id, onClose }: ModalProps) {
                 <p>Height: {person.height}</p>
                 <p>Mass: {person.mass}</p>
                 {person.films?.map((film, index) => (
-                  <p>Film {index + 1}: {film}</p>
+                  <p>Film {index + 1}: {movies[film]}</p>
                 ))}
             </div>
         </div>
