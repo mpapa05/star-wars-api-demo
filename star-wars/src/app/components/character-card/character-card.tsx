@@ -7,7 +7,7 @@ interface CardProps {
 
 export default function CharacterCard({ name, id}: CardProps) {
     return (
-        <div className='bg-sky-500/50 rounded-md pt-4 cursor-pointer transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 hover:brightness-125 duration-300 hover:font-black duration-300'>
+        <div className='bg-sky-500/50 rounded-md pt-6 pb-1 cursor-pointer transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 hover:brightness-125 duration-300 hover:font-black duration-300'>
             <Image 
                 src={"/"+id+".jpg"}
                 alt={name}

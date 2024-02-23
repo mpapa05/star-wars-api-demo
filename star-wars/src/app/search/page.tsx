@@ -5,6 +5,8 @@ import { People, Person } from "../interfaces/people";
 import Image from 'next/image'
 import CharacterCard from "../components/character-card/character-card";
 import CharacterModal from "../components/character-modal/character-modal";
+import Link from "next/link";
+import Loading from "../components/loading/loading";
 
 export default function People() {
   const [searchString, setSearchString] = useState<string>('');
@@ -41,15 +43,6 @@ export default function People() {
     setSelectedPerson(null);
   }
 
-  if (isLoading) {
-    return (
-        <>
-        <Image src="/bb8.svg" alt="loading" width="200" height="200" /><p>Loading...</p>
-        </>
-    )
-    ;
-  }
-
   const handleSearch = () => {
     // Implement your search logic here
     console.log(`Searching for: ${searchString}`);
@@ -70,6 +63,15 @@ export default function People() {
   };
 
   return (
+    <div>
+      <Link href="/">
+                <button className='btn btn-blue'>Back to home</button>
+            </Link>
+            <Link href="/people">
+                <button className='btn btn-blue'>Go to People</button>
+            </Link>
+    
+
     <div className="flex items-center">
       <input
         type="text"
@@ -102,6 +104,11 @@ export default function People() {
       </div>
 
       {/* Display filtered results */}
+
+
+      {isLoading ? (
+        <Loading />
+          ) : (<>
       {searchResult?.results?.map((person: Person, index: number) => (
         <div key={index}>
           <div onClick={() => openModal(person)}>
@@ -114,6 +121,8 @@ export default function People() {
                     <CharacterModal person={selectedPerson} id={selectedPerson.url.substring(29).replace('/', '')} onClose={closeModal} />
                 </div>
       )}
+      </>)}
+    </div>
     </div>
   );
 }
