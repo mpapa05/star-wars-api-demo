@@ -30,7 +30,6 @@ export default function People() {
     }, []);
 
     const openModal = (person: Person) => {
-        console.log(person.name);
         setSelectedPerson(person);
     }
 

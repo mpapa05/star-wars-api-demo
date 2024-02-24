@@ -12,7 +12,6 @@ import Link from "next/link";
 export function Header() {
   const [openNav, setOpenNav] = React.useState(false);
   const pathname = usePathname()
-  console.log(pathname)
  
   React.useEffect(() => {
     window.addEventListener(

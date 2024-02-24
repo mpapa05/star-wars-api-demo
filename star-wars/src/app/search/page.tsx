@@ -116,7 +116,6 @@ export default function People() {
   };
 
   const openModal = (person: Person) => {
-    console.log(person.name);
     setSelectedPerson(person);
   }
   const closeModal = () => {
@@ -124,20 +123,14 @@ export default function People() {
   }
 
   const handleSearch = () => {
-    // Implement your search logic here
-    console.log(`Searching for: ${searchString}`);
     setIsLoading(true);
-    // Make API request to SWAPI
     fetch(`https://swapi.dev/api/people/?search=${searchString}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setSearchResult(data);
         setIsLoading(false);
-        // Handle the data as needed
       })
       .catch(error => {
-        // Handle errors
         console.error('Error fetching data:', error);
       });
   };
