@@ -48,7 +48,7 @@ export default function People() {
     if (!peoplePageData) {
         return <>
             <Loading />
-            <p>Waiting for data...</p>;
+            <p>Waiting for data...</p>
         </>
     }
     
@@ -69,11 +69,11 @@ export default function People() {
 
 
     {/* Conditionally render Loading component */}
-    <div className='grid grid-cols-5 gap-3 p-4'>
+    <div className='grid grid-cols-5 gap-3 p-4 '>
     {isLoading ? (
             <Loading />
             ) : (
-        <>
+            <>
             {peoplePageData.results?.map((person: Person, index: number) => (
                 <div key={index}>
                     <div onClick={() => openModal(person)}>

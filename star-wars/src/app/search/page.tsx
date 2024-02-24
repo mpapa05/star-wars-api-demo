@@ -92,49 +92,55 @@ export default function People() {
       </Link>
     
 
-      <div className="flex items-center">
+      <div className="grid grid-rows-1">
+        <div className="searchAndFilter grid grid-rows-1 place-content-center h-[270px]">
+
+        
         <input
           type="text"
           placeholder="Search..."
-          className="px-4 py-2 border rounded-l focus:outline-none"
+          className="px-4 py-2 border rounded-l focus:outline-none max-h-[48px]"
           value={searchString}
           onChange={handleInputChange}
         />
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded-r"
+          className="btn btn-blue"
           onClick={handleSearch}
         >Search
         </button>
         {/* Filter options */}
         <div>
-        <label>Gender:</label>
-        <select value={filters.gender} onChange={(e) => handleFilterChange(e, 'gender')}>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="unknown">unknown</option>
-          <option value="n/a">n/a</option>
-        </select>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white max-w-[200px]">Gender:</label>
+          <select className="max-w-[300px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={filters.gender} onChange={(e) => handleFilterChange(e, 'gender')}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="unknown">unknown</option>
+            <option value="n/a">n/a</option>
+          </select>
 
-        <label>Homeworld:</label>
-        <select value={filters.homeworld} onChange={(e) => handleFilterChange(e, 'homeworld')}>
-          <option value="">All</option>
-          {Array.from(uniqueHomeworlds).map((homeworld: string) => (
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white max-w-[200px]">Homeworld:</label>
+          <select className="max-w-[300px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={filters.homeworld} onChange={(e) => handleFilterChange(e, 'homeworld')}>
+            <option value="">All</option>
+            {Array.from(uniqueHomeworlds).map((homeworld: string) => (
             <option key={homeworld} value={homeworld}>
               {homeworld}
             </option>
-          ))}
-        </select>
-        <button onClick={applyFilters}>Apply Filters</button>
-        <button onClick={clearFilters}>Clear Filters</button>
-      </div>
+            ))}
+          </select>
+          <button className='btn btn-blue' onClick={applyFilters}>Apply Filters</button>
+          <button className='btn btn-blue' onClick={clearFilters}>Clear Filters</button>
+        </div>
+        </div>
 
         {/* Display filtered results */}
 
 
         {isLoading ? (
-        <Loading />
+          <div className="grid grid-rows-1 place-content-center">
+            <Loading />
+          </div>
       ) : (
-        <>
+        <div className='grid grid-cols-5 gap-3 p-4'>
           {(filteredResults || searchResult?.results)?.map((person: Person, index: number) => (
             <div key={index}>
               <div onClick={() => openModal(person)}>
@@ -147,7 +153,7 @@ export default function People() {
               <CharacterModal person={selectedPerson} id={selectedPerson.url.substring(29).replace('/', '')} onClose={closeModal} />
             </div>
           )}
-        </>
+        </div>
       )}
       </div>
     </div>
