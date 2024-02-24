@@ -18,7 +18,9 @@ export default function People() {
     homeworld: '',
   });
   const [filteredResults, setFilteredResults] = useState<Person[] | null>(null);
-  const [uniqueHomeworlds, setUniqueHomeworlds] = useState<Set<string>>(new Set());
+  const uniqueHomeworlds = new Set<string>(
+    searchResult?.results?.map((person: Person) => person.homeworld) || []
+  );
   type Homeworlds = {
     [key: string]: string;
   };
@@ -112,12 +114,6 @@ export default function People() {
     setFilters({ gender: '', homeworld: '' });
     setFilteredResults(null);
   };
-  
-  useEffect(() => {
-    // Update unique homeworlds whenever search results change
-    const homeworldSet = new Set<string>(searchResult?.results?.map((person: Person) => person.homeworld) || []);
-    setUniqueHomeworlds(homeworldSet);
-  }, [searchResult]);
 
   const openModal = (person: Person) => {
     console.log(person.name);
@@ -148,16 +144,8 @@ export default function People() {
 
   return (
     <div>
-      <Link href="/">
-        <button className='btn btn-blue'>Back to home</button>
-      </Link>
-      <Link href="/people">
-        <button className='btn btn-blue'>Go to People</button>
-      </Link>
-    
-
-      <div className="grid grid-rows-1">
-        <div className="searchAndFilter grid grid-rows-1 place-content-center h-[270px]">
+      <div className="container">
+        <div className="grid grid-rows-1 place-content-center h-[270px]">
 
         
         <input
@@ -191,8 +179,8 @@ export default function People() {
             </option>
             ))}
           </select>
-          <button className='btn btn-blue' onClick={applyFilters}>Apply Filters</button>
-          <button className='btn btn-blue' onClick={clearFilters}>Clear Filters</button>
+          <button className="btn btn-blue" onClick={applyFilters}>Apply Filters</button>
+          <button className="btn btn-blue" onClick={clearFilters}>Clear Filters</button>
         </div>
         </div>
 

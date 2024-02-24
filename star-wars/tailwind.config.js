@@ -20,6 +20,7 @@ module.exports = {
         "st-6": "url('/bg-6.jpeg')",
         "st-7": "url('/bg-7.jpeg')",
         "st-8": "url('/bg-8.jpeg')",
+        "st-bg": "url('/starwars-cover",
       },
     },
   },

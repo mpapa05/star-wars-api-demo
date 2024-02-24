@@ -39,3 +39,7 @@ body {
 .btn-gray {
   @apply bg-gray-500 text-white;
 }
+.disabled {
+  pointer-events: none;
+  color: grey;
+}

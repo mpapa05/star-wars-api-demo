@@ -22,8 +22,8 @@ export default function CharacterModal({ person, id, onClose }: ModalProps) {
     return (
       <div className="fixed inset-0 flex bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
         <div className="w-[600px] z-40">
-            <div className="bg-st-1 bg-cover bg-center p-2 rounded">
-                <button className='btn btn-blue' onClick={onClose}>
+            <div className="bg-black rounded-md">
+                <button className="btn btn-blue" onClick={onClose}>
                   <Image src="/death-star-bold.svg" alt="loading" width="40" height="40" /><p>Close</p>
                 </button>
                 <Image 
@@ -31,17 +31,18 @@ export default function CharacterModal({ person, id, onClose }: ModalProps) {
                 alt={person.name}
                 width={200}
                 height={200}
-                className='mx-auto rounded-md backdrop-contrast-125'
+                className="mx-auto rounded-md backdrop-contrast-125"
             />
-                <h2>Name: {person.name}</h2>
-                <p>Height: {person.height}</p>
-                <p>Mass: {person.mass}</p>
-                {person.films?.map((film, index) => (
-                  <p>Film {index + 1}: {movies[film]}</p>
-                ))}
+                <div className="text-white font-bold p-5">
+                  <h2>Name: {person.name}</h2>
+                  <p>Height: {person.height}</p>
+                  <p>Mass: {person.mass}</p>
+                  {person.films?.map((film, index) => (
+                  <p key={index}>Film {index + 1}: {movies[film]}</p>))}
+                 </div>
             </div>
         </div>
-      </div>
-    );
-  };
+    </div>
+  );
+};
   
