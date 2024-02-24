@@ -69,7 +69,7 @@ export default function People() {
 
 
     {/* Conditionally render Loading component */}
-    <div className='grid grid-cols-5 gap-3 p-4 '>
+    <div className='grid grid-cols-5 gap-3 p-4'>
     {isLoading ? (
             <Loading />
             ) : (
