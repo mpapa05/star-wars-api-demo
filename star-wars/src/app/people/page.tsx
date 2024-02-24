@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { People, Person } from '../interfaces/people';
 import CharacterCard from '../components/character-card/character-card';
@@ -50,7 +49,6 @@ export default function People() {
                     <CharacterModal person={selectedPerson} id={selectedPerson.url.substring(29).replace('/', '')} onClose={closeModal} />
                 </div>
       )}
-    {/* Conditionally render Loading component */}
     <div className="grid grid-cols-5 gap-3 p-4">
     {isLoading ? (
             <Loading />

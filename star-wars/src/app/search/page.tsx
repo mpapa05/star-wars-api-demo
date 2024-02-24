@@ -1,11 +1,9 @@
 'use client';
 
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { People, Person } from "../interfaces/people";
-import Image from 'next/image'
 import CharacterCard from "../components/character-card/character-card";
 import CharacterModal from "../components/character-modal/character-modal";
-import Link from "next/link";
 import Loading from "../components/loading/loading";
 
 export default function People() {
