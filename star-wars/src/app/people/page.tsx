@@ -14,6 +14,7 @@ export default function People() {
     async function fetchData(link: string) {
         try {
             setIsLoading(true);
+            console.log(link)
             const response = await fetch(link, { method: 'GET' });
             const data = await response.json();
             
@@ -25,7 +26,7 @@ export default function People() {
     }
 
     useEffect(() => {
-        fetchData("https://swapi.dev/api/people/");
+        fetchData("https://swapi.tech/api/people/");
     }, []);
 
     const openModal = (person: Person) => {
@@ -46,7 +47,7 @@ export default function People() {
         <div className="container">
             {selectedPerson && (
                 <div className="z-50 absolute">
-                    <CharacterModal person={selectedPerson} id={selectedPerson.url.substring(29).replace('/', '')} onClose={closeModal} />
+                    <CharacterModal person={selectedPerson} id={selectedPerson.url.substring(33).replace('/', '')} onClose={closeModal} />
                 </div>
       )}
     <div className="grid grid-cols-5 gap-3 p-4">
@@ -57,7 +58,7 @@ export default function People() {
             {peoplePageData.results?.map((person: Person, index: number) => (
                 <div key={index}>
                     <div onClick={() => openModal(person)}>
-                        <CharacterCard name={person.name} id={person.url.substring(29).replace('/', '')} />
+                        <CharacterCard name={person.name} id={person.url.substring(33).replace('/', '')} />
                     </div>
                 </div>
             ))}

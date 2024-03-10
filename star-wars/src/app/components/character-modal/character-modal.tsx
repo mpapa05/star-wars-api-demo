@@ -10,12 +10,12 @@ type Movies = {
   [key: string]: string;
 };
 const movies: Movies = {
-  "https://swapi.dev/api/films/1/": "A New Hope",
-  "https://swapi.dev/api/films/2/": "The Empire Strikes Back",
-  "https://swapi.dev/api/films/3/": "Return of the Jedi",
-  "https://swapi.dev/api/films/4/": "The Phantom Menace",
-  "https://swapi.dev/api/films/5/": "Attack of the Clones",
-  "https://swapi.dev/api/films/6/": "Revenge of the Sith",
+  "https://swapi.tech/api/films/1/": "A New Hope",
+  "https://swapi.tech/api/films/2/": "The Empire Strikes Back",
+  "https://swapi.tech/api/films/3/": "Return of the Jedi",
+  "https://swapi.tech/api/films/4/": "The Phantom Menace",
+  "https://swapi.tech/api/films/5/": "Attack of the Clones",
+  "https://swapi.tech/api/films/6/": "Revenge of the Sith",
 };
 
 export default function CharacterModal({ person, id, onClose }: ModalProps) {

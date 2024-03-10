@@ -23,66 +23,66 @@ export default function People() {
     [key: string]: string;
   };
   const homeworlds: Homeworlds = {
-    "https://swapi.dev/api/planets/1/": "Tatooine", 
-    "https://swapi.dev/api/planets/2/": "Alderaan",
-    "https://swapi.dev/api/planets/3/": "Yavin IV",
-    "https://swapi.dev/api/planets/4/":"Hoth",
-    "https://swapi.dev/api/planets/5/": "Dagobah",
-    "https://swapi.dev/api/planets/6/": "Bespin",
-    "https://swapi.dev/api/planets/7/":"Endor",
-    "https://swapi.dev/api/planets/8/":"Naboo",
-    "https://swapi.dev/api/planets/9/":"Coruscant",
-    "https://swapi.dev/api/planets/10/":"Kamino",
-    "https://swapi.dev/api/planets/11/":"Geonosis",
-    "https://swapi.dev/api/planets/12/":"Utapau",
-    "https://swapi.dev/api/planets/13/":"Mustafar",
-    "https://swapi.dev/api/planets/14/":"Kashyyyk",
-    "https://swapi.dev/api/planets/15/":"Polis Massa",
-    "https://swapi.dev/api/planets/16/":"Mygeeto",
-    "https://swapi.dev/api/planets/17/":"Felucia",
-    "https://swapi.dev/api/planets/18/":"Cato Neimoidia",
-    "https://swapi.dev/api/planets/19/":"Saleucami",
-    "https://swapi.dev/api/planets/20/":"Stewjon",
-    "https://swapi.dev/api/planets/21/":"Eriadu",
-    "https://swapi.dev/api/planets/22/":"Corellia",
-    "https://swapi.dev/api/planets/23/":"Rodia",
-    "https://swapi.dev/api/planets/24/":"Nal Hutta",
-    "https://swapi.dev/api/planets/25/":"Dantooine",
-    "https://swapi.dev/api/planets/26/":"Bestine IV",
-    "https://swapi.dev/api/planets/27/":"Ord Mantell",
-    "https://swapi.dev/api/planets/28/":"unknown",
-    "https://swapi.dev/api/planets/29/":"Trandosha",
-    "https://swapi.dev/api/planets/30/":"Socorro",
-    "https://swapi.dev/api/planets/31/":"Mon Cala",
-    "https://swapi.dev/api/planets/32/":"Chandrila",
-    "https://swapi.dev/api/planets/33/":"Sullust",
-    "https://swapi.dev/api/planets/34/":"Toydaria",
-    "https://swapi.dev/api/planets/35/":"Malastare",
-    "https://swapi.dev/api/planets/36/":"Dathomir",
-    "https://swapi.dev/api/planets/37/":"Ryloth",
-    "https://swapi.dev/api/planets/38/":"Aleen Minor",
-    "https://swapi.dev/api/planets/39/":"Vulpter",
-    "https://swapi.dev/api/planets/40/":"Troiken",
-    "https://swapi.dev/api/planets/41/": "Tund",
-    "https://swapi.dev/api/planets/42/": "Haruun Kal",
-    "https://swapi.dev/api/planets/43/": "Cerea",
-    "https://swapi.dev/api/planets/44/": "Glee Anselm",
-    "https://swapi.dev/api/planets/45/": "Iridonia",
-    "https://swapi.dev/api/planets/46/": "Tholoth",
-    "https://swapi.dev/api/planets/47/": "Iktotch",
-    "https://swapi.dev/api/planets/48/": "Quermia",
-    "https://swapi.dev/api/planets/49/": "Dorin",
-    "https://swapi.dev/api/planets/50/": "Champala",
-    "https://swapi.dev/api/planets/51/": "Mirial",
-    "https://swapi.dev/api/planets/52/": "Serenno",
-    "https://swapi.dev/api/planets/53/": "Concord Dawn",
-    "https://swapi.dev/api/planets/54/": "Zolan",
-    "https://swapi.dev/api/planets/55/": "Ojom",
-    "https://swapi.dev/api/planets/56/": "Skako",
-    "https://swapi.dev/api/planets/57/": "Muunilinst",
-    "https://swapi.dev/api/planets/58/": "Shili",
-    "https://swapi.dev/api/planets/59/": "Kalee",
-    "https://swapi.dev/api/planets/60/": "Umbara",
+    "https://swapi.tech/api/planets/1/": "Tatooine", 
+    "https://swapi.tech/api/planets/2/": "Alderaan",
+    "https://swapi.tech/api/planets/3/": "Yavin IV",
+    "https://swapi.tech/api/planets/4/":"Hoth",
+    "https://swapi.tech/api/planets/5/": "Dagobah",
+    "https://swapi.tech/api/planets/6/": "Bespin",
+    "https://swapi.tech/api/planets/7/":"Endor",
+    "https://swapi.tech/api/planets/8/":"Naboo",
+    "https://swapi.tech/api/planets/9/":"Coruscant",
+    "https://swapi.tech/api/planets/10/":"Kamino",
+    "https://swapi.tech/api/planets/11/":"Geonosis",
+    "https://swapi.tech/api/planets/12/":"Utapau",
+    "https://swapi.tech/api/planets/13/":"Mustafar",
+    "https://swapi.tech/api/planets/14/":"Kashyyyk",
+    "https://swapi.tech/api/planets/15/":"Polis Massa",
+    "https://swapi.tech/api/planets/16/":"Mygeeto",
+    "https://swapi.tech/api/planets/17/":"Felucia",
+    "https://swapi.tech/api/planets/18/":"Cato Neimoidia",
+    "https://swapi.tech/api/planets/19/":"Saleucami",
+    "https://swapi.tech/api/planets/20/":"Stewjon",
+    "https://swapi.tech/api/planets/21/":"Eriadu",
+    "https://swapi.tech/api/planets/22/":"Corellia",
+    "https://swapi.tech/api/planets/23/":"Rodia",
+    "https://swapi.tech/api/planets/24/":"Nal Hutta",
+    "https://swapi.tech/api/planets/25/":"Dantooine",
+    "https://swapi.tech/api/planets/26/":"Bestine IV",
+    "https://swapi.tech/api/planets/27/":"Ord Mantell",
+    "https://swapi.tech/api/planets/28/":"unknown",
+    "https://swapi.tech/api/planets/29/":"Trandosha",
+    "https://swapi.tech/api/planets/30/":"Socorro",
+    "https://swapi.tech/api/planets/31/":"Mon Cala",
+    "https://swapi.tech/api/planets/32/":"Chandrila",
+    "https://swapi.tech/api/planets/33/":"Sullust",
+    "https://swapi.tech/api/planets/34/":"Toydaria",
+    "https://swapi.tech/api/planets/35/":"Malastare",
+    "https://swapi.tech/api/planets/36/":"Dathomir",
+    "https://swapi.tech/api/planets/37/":"Ryloth",
+    "https://swapi.tech/api/planets/38/":"Aleen Minor",
+    "https://swapi.tech/api/planets/39/":"Vulpter",
+    "https://swapi.tech/api/planets/40/":"Troiken",
+    "https://swapi.tech/api/planets/41/": "Tund",
+    "https://swapi.tech/api/planets/42/": "Haruun Kal",
+    "https://swapi.tech/api/planets/43/": "Cerea",
+    "https://swapi.tech/api/planets/44/": "Glee Anselm",
+    "https://swapi.tech/api/planets/45/": "Iridonia",
+    "https://swapi.tech/api/planets/46/": "Tholoth",
+    "https://swapi.tech/api/planets/47/": "Iktotch",
+    "https://swapi.tech/api/planets/48/": "Quermia",
+    "https://swapi.tech/api/planets/49/": "Dorin",
+    "https://swapi.tech/api/planets/50/": "Champala",
+    "https://swapi.tech/api/planets/51/": "Mirial",
+    "https://swapi.tech/api/planets/52/": "Serenno",
+    "https://swapi.tech/api/planets/53/": "Concord Dawn",
+    "https://swapi.tech/api/planets/54/": "Zolan",
+    "https://swapi.tech/api/planets/55/": "Ojom",
+    "https://swapi.tech/api/planets/56/": "Skako",
+    "https://swapi.tech/api/planets/57/": "Muunilinst",
+    "https://swapi.tech/api/planets/58/": "Shili",
+    "https://swapi.tech/api/planets/59/": "Kalee",
+    "https://swapi.tech/api/planets/60/": "Umbara",
   }
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchString(event.target.value);
@@ -122,7 +122,7 @@ export default function People() {
 
   const handleSearch = () => {
     setIsLoading(true);
-    fetch(`https://swapi.dev/api/people/?search=${searchString}`)
+    fetch(`https://swapi.tech/api/people/?search=${searchString}`)
       .then(response => response.json())
       .then(data => {
         setSearchResult(data);
@@ -187,13 +187,13 @@ export default function People() {
           {(filteredResults || searchResult?.results)?.map((person: Person, index: number) => (
             <div key={index}>
               <div onClick={() => openModal(person)}>
-                <CharacterCard name={person.name} id={person.url.substring(29).replace('/', '')} />
+                <CharacterCard name={person.name} id={person.url.substring(33).replace('/', '')} />
               </div>
             </div>
           ))}
           {selectedPerson && (
             <div className="z-50 absolute">
-              <CharacterModal person={selectedPerson} id={selectedPerson.url.substring(29).replace('/', '')} onClose={closeModal} />
+              <CharacterModal person={selectedPerson} id={selectedPerson.url.substring(33).replace('/', '')} onClose={closeModal} />
             </div>
           )}
         </div>
