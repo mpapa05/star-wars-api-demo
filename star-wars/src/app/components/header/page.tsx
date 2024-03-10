@@ -2,9 +2,9 @@
 import React from "react";
 import {
   Navbar,
-  MobileNav,
   Typography,
   IconButton,
+  Collapse,
 } from "@material-tailwind/react";
 import { usePathname } from 'next/navigation'
 import Link from "next/link";
@@ -113,11 +113,11 @@ export function Header() {
           )}
         </IconButton>
       </div>
-      <MobileNav open={openNav}>
+      {openNav ? (<Collapse open={openNav}>
         <div className="container mx-auto">
           {navList}
         </div>
-      </MobileNav>
+      </Collapse>) : null}
     </Navbar>
   );
 }

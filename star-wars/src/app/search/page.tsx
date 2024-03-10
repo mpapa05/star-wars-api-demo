@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent, useState } from "react";
-import { People, Person } from "../interfaces/people";
+import { People, Person, SearchPerson, SearchResult } from "../interfaces/people";
 import CharacterCard from "../components/character-card/character-card";
 import CharacterModal from "../components/character-modal/character-modal";
 import Loading from "../components/loading/loading";
@@ -9,15 +9,15 @@ import Loading from "../components/loading/loading";
 export default function People() {
   const [searchString, setSearchString] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
-  const [searchResult, setSearchResult] = useState<People>();
+  const [searchResult, setSearchResult] = useState<SearchResult>();
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
   const [filters, setFilters] = useState<{ gender: string; homeworld: string }>({
     gender: '',
     homeworld: '',
   });
-  const [filteredResults, setFilteredResults] = useState<Person[] | null>(null);
+  const [filteredResults, setFilteredResults] = useState<SearchPerson[] | null>(null);
   const uniqueHomeworlds = new Set<string>(
-    searchResult?.results?.map((person: Person) => person.homeworld) || []
+    searchResult?.result?.map((person: SearchPerson) => person.properties.homeworld) || []
   );
   type Homeworlds = {
     [key: string]: string;
@@ -98,9 +98,9 @@ export default function People() {
   };
 
   const applyFilters = () => {
-    const filteredResult = searchResult?.results?.filter((person: Person) => {
-      const genderFilter = filters.gender === '' || person.gender === filters.gender;
-      const homeworldFilter = filters.homeworld === '' || person.homeworld === filters.homeworld;
+    const filteredResult = searchResult?.result?.filter((person: SearchPerson) => {
+      const genderFilter = filters.gender === '' || person.properties.gender === filters.gender;
+      const homeworldFilter = filters.homeworld === '' || person.properties.homeworld === filters.homeworld;
 
       return genderFilter && homeworldFilter;
     });
@@ -122,9 +122,10 @@ export default function People() {
 
   const handleSearch = () => {
     setIsLoading(true);
-    fetch(`https://swapi.tech/api/people/?search=${searchString}`)
+    fetch(`https://swapi.tech/api/people/?name=${searchString}`)
       .then(response => response.json())
       .then(data => {
+        console.log(searchString, data);
         setSearchResult(data);
         setIsLoading(false);
       })
@@ -184,10 +185,10 @@ export default function People() {
           </div>
       ) : (
         <div className='grid grid-cols-5 gap-3 p-4'>
-          {(filteredResults || searchResult?.results)?.map((person: Person, index: number) => (
+          {(filteredResults || searchResult?.result)?.map((person: SearchPerson, index: number) => (
             <div key={index}>
-              <div onClick={() => openModal(person)}>
-                <CharacterCard name={person.name} id={person.url.substring(33).replace('/', '')} />
+              <div onClick={() => openModal(person.properties)}>
+                <CharacterCard name={person.properties.name} id={person.properties.url.substring(33).replace('/', '')} />
               </div>
             </div>
           ))}

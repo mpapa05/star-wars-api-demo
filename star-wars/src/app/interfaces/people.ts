@@ -5,6 +5,19 @@ export interface People {
     results: Person[];
 }
 
+export interface SearchResult {
+    message: string;
+    result: SearchPerson[];
+}
+
+export interface SearchPerson {
+    description: string;
+    properties: Person;
+    uid: string;
+    __v: number;
+    _id: string;
+}
+
 export interface Person {
     id?: string;
     name: string;
