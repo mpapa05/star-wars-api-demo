@@ -6,7 +6,7 @@ export interface People {
 }
 
 export interface SearchResult {
-    message: string;
+    message?: string;
     result: SearchPerson[];
 }
 

@@ -50,7 +50,7 @@ export default function People() {
                     <CharacterModal person={selectedPerson} id={selectedPerson.url.substring(33).replace('/', '')} onClose={closeModal} />
                 </div>
       )}
-    <div className="grid grid-cols-5 gap-3 p-4">
+    <div className="grid grid-cols-5 gap-5 p-4">
     {isLoading ? (
             <Loading />
             ) : (
