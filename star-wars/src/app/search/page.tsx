@@ -119,7 +119,6 @@ export default function People() {
           onClick={handleSearch}
         >Search
         </button>
-        {/* Filter options */}
         <div>
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white max-w-[200px]">Gender:</label>
           <select className="max-w-[300px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={filters.gender} onChange={(e) => handleFilterChange(e, 'gender')}>
@@ -136,7 +135,6 @@ export default function People() {
             {Array.from(uniqueHomeworlds).map((homeworld: string) => (
             <option key={homeworld} value={homeworld}>
               {homeworld}
-              {/* {fetchPlanetName(homeworld)} */}
             </option>
             ))}
           </select>
@@ -145,9 +143,6 @@ export default function People() {
         </div>
         </div>
 
-        {/* Display filtered results */}
-
-        {/* const id = person.properties.url.split("/").pop(), */}
         {isLoading ? (
           <div className="grid grid-rows-1 place-content-center">
             <Loading />

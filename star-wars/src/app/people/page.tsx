@@ -14,10 +14,9 @@ export default function People() {
     async function fetchData(link: string) {
         try {
             setIsLoading(true);
-            console.log(link)
             const response = await fetch(link, { method: 'GET' });
             const data = await response.json();
-            
+            console.log(data)
             setPeoplePageData(data);
             setIsLoading(false);
         } catch (error) {
