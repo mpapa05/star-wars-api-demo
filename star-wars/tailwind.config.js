@@ -21,6 +21,7 @@ module.exports = {
         "st-7": "url('/bg-7.jpeg')",
         "st-8": "url('/bg-8.jpeg')",
         "st-bg": "url('/starwars-cover",
+        "st-hyper-bg": "url('/hyperspace-bg.jpg')"
       },
     },
   },
