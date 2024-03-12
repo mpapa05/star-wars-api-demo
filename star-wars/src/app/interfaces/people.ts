@@ -1,25 +1,12 @@
 export interface People {
     count: number;
     next: string;
-    previous: string;
+    previous: string | null;
     results: Person[];
 }
 
-export interface SearchResult {
-    message?: string;
-    result: SearchPerson[];
-}
-
-export interface SearchPerson {
-    description: string;
-    properties: Person;
-    uid: string;
-    __v: number;
-    _id: string;
-}
-
 export interface Person {
-    id?: string;
+    id?: string | undefined;
     name: string;
     height: string;
     mass: string;
@@ -29,6 +16,7 @@ export interface Person {
     birth_year: string;
     gender: string;
     homeworld: string;
+    homeworldData?: HomeworldCardData;
     films: string[];
     species: string[];
     vehicles: string[];
@@ -36,4 +24,20 @@ export interface Person {
     created: string;
     edited: string;
     url: string;
+}
+
+export interface PersonCardData {
+    id: string;
+    name: string;
+    height: string;
+    mass: string;
+    birth_year: string;
+    films: string[];
+    homeworldData: HomeworldCardData;
+}
+
+export interface HomeworldCardData {
+    name: string;
+    terrain: string;
+    climate: string;
 }

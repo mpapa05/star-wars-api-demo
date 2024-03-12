@@ -19,7 +19,6 @@ export default function CharacterCard({ name, id }: CardProps) {
       </div>
       <div className="absolute inset-x-0 w-100 bottom-0 bg-gradient-to-t from-black to-transparent p-4 z-30">
         <h2 className="text-white">{name}</h2>
-        <h2 className="text-white">{name}</h2>
       </div>
     </div>
   );

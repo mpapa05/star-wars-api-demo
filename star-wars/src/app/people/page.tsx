@@ -12,20 +12,52 @@ export default function People() {
     const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
 
     async function fetchData(link: string) {
+        setIsLoading(true);
         try {
-            setIsLoading(true);
             const response = await fetch(link, { method: 'GET' });
             const data = await response.json();
-            console.log(data)
-            setPeoplePageData(data);
-            setIsLoading(false);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+  
+      if (data.results.length > 0) {
+        const updatedResult: Person[] = await Promise.all(
+          data.results.map(async (person: Person) => {
+            console.log(data);
+            const homeworldUrl = person.homeworld;
+            const moviesUrls = person.films;
+            const match = person.url.match(/\/(\d+)\/$/);
+            try {
+              const homeworldResponse = await fetch(homeworldUrl);
+              const homeworldData = await homeworldResponse.json();
+              const moviesData = await Promise.all(moviesUrls.map(async (url: string) => {
+              const response = await fetch(url);
+                return await response.json();
+              }));
+              return {
+                  ...person,
+                  id: match ? match[1] : 'placeholder',
+                  films: moviesData.map((movie: any) => movie.title),
+                  homeworldData: {
+                    name: homeworldData.name,
+                    terrain: homeworldData.terrain,
+                    climate: homeworldData.climate,
+                  }
+              };
+            } catch (error) {
+              console.error('Error fetching homeworld data:', error);
+              return person;
+            }
+          })
+        );
+        setPeoplePageData({ ...data, results: updatedResult });
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setIsLoading(false);
+    }
     }
 
     useEffect(() => {
-        fetchData("https://swapi.tech/api/people/");
+        fetchData("https://swapi.py4e.com/api/people/");
     }, []);
 
     const openModal = (person: Person) => {
@@ -44,30 +76,31 @@ export default function People() {
     
     return (
         <div className="container">
-            {selectedPerson && (
+            {selectedPerson?.id && (
                 <div className="z-50 absolute">
-                    <CharacterModal person={selectedPerson} id={selectedPerson.url.substring(33).replace('/', '')} onClose={closeModal} />
+                    <CharacterModal person={selectedPerson} onClose={closeModal} />
                 </div>
-      )}
-    <div className="grid grid-cols-5 gap-5 p-4">
-    {isLoading ? (
-            <Loading />
-            ) : (
-            <>
-            {peoplePageData.results?.map((person: Person, index: number) => (
-                <div key={index}>
-                    <div onClick={() => openModal(person)}>
-                        <CharacterCard name={person.name} id={person.url.substring(33).replace('/', '')} />
+            )}
+            <div className="grid grid-cols-5 gap-5 p-4">
+            {isLoading ? (
+                <Loading />
+                ) : (
+                    <>
+                    {peoplePageData.results?.map((person: Person, index: number) => (
+                    <div key={index}>
+                        {person?.id && (
+                        <div onClick={() => openModal(person)}>
+                            <CharacterCard name={person.name} id={person.id} />
+                        </div>)}
                     </div>
-                </div>
-            ))}
-        </>
-    )}
-    </div>
-    <div className="grid grid-cols-2 gap-3 mt-5">
-      <button className={`btn ${peoplePageData.previous ? "btn-blue" : "btn-gray"}`} disabled={!peoplePageData.previous} onClick={() => fetchData(peoplePageData.previous)}>previous</button>
-      <button className={`btn ${peoplePageData.next ? "btn-blue" : "btn-gray"}`} disabled={!peoplePageData.next} onClick={() => fetchData(peoplePageData.next)}>next</button>
-    </div>
-  </div>
-);
+                    ))}
+                    </>
+            )}
+            </div>
+        <div className="grid grid-cols-2 gap-3 mt-5">
+            <button className={`btn ${peoplePageData.previous ? "btn-blue" : "btn-gray"}`} disabled={!peoplePageData.previous} onClick={() => fetchData(peoplePageData.previous)}>previous</button>
+            <button className={`btn ${peoplePageData.next ? "btn-blue" : "btn-gray"}`} disabled={!peoplePageData.next} onClick={() => fetchData(peoplePageData.next)}>next</button>
+        </div>
+        </div>
+    );
 }
