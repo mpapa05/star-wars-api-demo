@@ -9,34 +9,40 @@ interface ModalProps {
 export default function CharacterModal({ person, onClose }: ModalProps) {
   console.log(person)  
   return (
-      <div className="fixed inset-0 flex bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
-        <div className="w-[600px] z-40">
-            <div className="bg-black rounded-md">
-                <button className="btn btn-blue" onClick={onClose}>
-                  <Image src="/death-star-bold.svg" alt="loading" width="40" height="40" /><p>Close</p>
+          <div className="fixed inset-0 flex bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
+            <div className="w-[600px] z-40">
+              <div className="bg-black rounded-lg">
+                <button className="" onClick={onClose}>
+                  <Image src="/death-star-bold.svg" alt="loading" width="40" height="40" />
+                  <p className=" text-white font-bold relative -top-[40px] leading-[35px]">close</p>
                 </button>
-                <Image 
-                src={"/"+person.id+".jpg"}
-                alt={person.name}
-                width={200}
-                height={200}
-                className="mx-auto rounded-md backdrop-contrast-125"
-            />
-                <div className="text-white font-bold p-5">
-                  <h2>Name: fejlécben {person.name}</h2>
-                  <p>Height: {person.height}</p>
-                  <p>Mass: {person.mass}</p>
-                  <p>BirthDate</p>
-                  <p>movienumbers: and then movies:</p>
-                  {person.films?.map((film, index) => (
-                  <p key={index}>Film {index + 1}: {film}</p>))}
-                  <p>birthplace - planet name:</p>
-                  <p>birthplace - planet terrain:</p>
-                  <p>birthplace - planet climate:</p>
-                 </div>
+                <div className="grid grid-rows-6 auto-rows-min relative z-10 bg-st-hyper bg-cover bg-center rounded-b-lg">
+                  <div className="row-span-1 bg-black">
+                    <span className="text-white font-bold text-3xl flex items-center justify-center">{person.name}</span>
+                  </div>
+                  <div className="grid grid-cols-2 row-span-5 bg-gradient-to-b from-black to-transparent">
+                  <Image 
+                    src={"/"+person.id+"-removed.png"}
+                    alt={person.name}
+                    width={376}
+                    height={376}
+                    className="rounded-bl-lg"
+                  />
+                  <div className="text-white font-bold p-5">
+                    <p>Height: {person.height}</p>
+                    <p>Mass: {person.mass}</p>
+                    <p>Birth year: {person.birth_year}</p>
+                    {person.films?.map((film, index) => (
+                      <p key={index}>Film {index + 1}: {film}</p>))}
+                    <p>Homeplanet: {person.homeworldData?.name}</p>
+                    <p>Terrain: {person.homeworldData?.terrain}</p>
+                    <p>Climate: {person.homeworldData?.climate}</p>
+                  </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
+          </div>
   );
 };
   
