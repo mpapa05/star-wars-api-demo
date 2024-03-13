@@ -41,18 +41,6 @@ export function Header() {
         className="flex items-center gap-x-2 p-1 font-medium"
       >
 
-        <Link className={`link ${pathname === '/people' ? "flex items-center disabled" : "flex items-center text-black"}`} href="/people">
-          People
-        </Link>
-      </Typography>
-      <Typography
-        placeholder=""
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="flex items-center gap-x-2 p-1 font-medium"
-      >
-
         <Link className={`link ${pathname === '/search' ? "flex items-center disabled" : "flex items-center text-black"}`} href="/search">
           Search
         </Link>

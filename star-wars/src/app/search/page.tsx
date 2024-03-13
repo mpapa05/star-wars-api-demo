@@ -78,7 +78,6 @@ export default function People() {
     setIsLoading(true);
     const data = await fetchData(link);
 
-    if (data.results.length > 0) {
       const updatedResult: Person[] = await Promise.all(
         data.results.map(async (person: Person) => {
           const homeworldUrl = person.homeworld;
@@ -105,9 +104,7 @@ export default function People() {
       setPeople({ ...data, results: updatedResult });
 
       setIsLoading(false);
-    } else {
-      console.log("No results found.", !!filteredResults, filteredResults, people?.results);
-    }
+
   }, []);
 
   useEffect(() => {
@@ -178,7 +175,7 @@ export default function People() {
         
         {isLoading && people?.results ? (
           <div className="grid grid-rows-1 place-content-center">
-            <Loading />
+             <Loading  />
           </div>
           ) : (
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5 p-4 max-w-[1024px]">
@@ -193,6 +190,11 @@ export default function People() {
                 </div>
               )
             )}
+            {filteredResults?.length === 0 && 
+            <div className="flex justify-center content-center absolute">
+              <Loading src="death-star-bold.svg" message="Not Found" />
+            </div>
+            }
             {selectedPerson?.id && (
               <div className="z-50 absolute">
                 <CharacterModal person={selectedPerson} onClose={closeModal} />
@@ -200,7 +202,7 @@ export default function People() {
             )}
           </div>
         )}
-
+        {filteredResults?.length !== 0 &&
         <div className="grid grid-cols-2 gap-3 mt-5 max-w-[1024px]">
           <button
             className={`btn ${people?.previous ? "btn-blue" : "btn-gray"}`}
@@ -218,7 +220,7 @@ export default function People() {
           >
             next
           </button>
-        </div>
+        </div>}
         
     </div>
   );
