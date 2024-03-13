@@ -16,7 +16,7 @@ export interface Person {
     birth_year: string;
     gender: string;
     homeworld: string;
-    homeworldData?: HomeworldCardData;
+    homeworldData: HomeworldCardData;
     films: string[];
     species: string[];
     vehicles: string[];
@@ -24,6 +24,7 @@ export interface Person {
     created: string;
     edited: string;
     url: string;
+    planetName: string;
 }
 
 export interface PersonCardData {

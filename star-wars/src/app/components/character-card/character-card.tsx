@@ -8,7 +8,7 @@ interface CardProps {
 
 export default function CharacterCard({ name, id }: CardProps) {
   return (
-    <div className="overflow-hidden relative rounded-lg cursor-pointer font-medium transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:brightness-125 duration-300">
+    <div className="overflow-hidden relative rounded-lg cursor-pointer font-medium transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:brightness-125 duration-300 max-w-[183px]">
       <div className="relative z-10 bg-st-hyper bg-cover bg-center">
         <Image
           src={`/${id}-removed.png`}
