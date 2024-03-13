@@ -24,7 +24,6 @@ export default function CharacterModal({ person, onClose }: ModalProps) {
     };
   }, []);
 
-  console.log(person)  
   return (
           <div className="fixed inset-0 flex bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
             <div ref={modalRef} className="w-[600px] z-40">
